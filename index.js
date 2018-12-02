@@ -1,6 +1,8 @@
+// Requirements
 var Word = require("./word.js");
 var inquirer = require('inquirer');
 
+// Global Variables
 wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "PETEY PIRANHA", "DRY BONES", "DONKEY KONG"];
 var select = 0;
 var chosenWord = "";
@@ -19,7 +21,7 @@ function startGame() {
     if (select > -1) {
         wordList.splice(select, 1);
     }
-    console.log("\nYou get 8 letter guesses to find the Mario character.\n")
+    console.log("\nYou Get 10 Changes to Correctly Guess this Name\n")
     promptUser();
 }
 
@@ -38,7 +40,7 @@ function promptUser() {
         });
     }
     else {
-        console.log("\nSorry, you're out of guesses.\n");
+        console.log("\nSorry, You Ran Out of Guesses!\n");
         console.log(chosenWord);
         chosenWord = "";
         gameWord = "";
@@ -64,13 +66,13 @@ function checkAnswer(data) {
         }
     }
     else {
-        console.log("\nPlease enter a letter, one at a time.\n");
+        console.log("\nYou Can Only Enter One Letter At A Time!\n");
         promptUser();
     }
 }
 
 function rightGuess() {
-    console.log("\nYou guessed correctly.\n");
+    console.log("\nYou guessed correctly!\n");
     if (chosenWord.replace(/ /g, "") == (gameWord.showWord()).replace(/ /g, "")) {
         console.log(gameWord.showWord());
         console.log('\nYou win!!\n');
