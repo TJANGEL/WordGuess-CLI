@@ -1,6 +1,5 @@
 var Word = require("./word.js");
 var inquirer = require('inquirer');
-var colors = require('colors');
 
 wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "PETEY PIRANHA", "DRY BONES", "DONKEY KONG"];
 var select = 0;
@@ -20,7 +19,7 @@ function startGame() {
     if (select > -1) {
         wordList.splice(select, 1);
     }
-    console.log("\nYou get 8 letter guesses to find the Mario character.\n".cyan)
+    console.log("\nYou get 8 letter guesses to find the Mario character.\n")
     promptUser();
 }
 
@@ -32,15 +31,15 @@ function promptUser() {
             {
                 type: "input",
                 name: "letter",
-                message: "\nPick a letter and press enter. ".cyan
+                message: "\nPick a letter and press enter. "
             }
         ]).then(function (data) {
             checkAnswer(data);
         });
     }
     else {
-        console.log("\nSorry, you're out of guesses.\n".inverse);
-        console.log(chosenWord.rainbow);
+        console.log("\nSorry, you're out of guesses.\n");
+        console.log(chosenWord);
         chosenWord = "";
         gameWord = "";
         select = 0;
@@ -55,9 +54,9 @@ function checkAnswer(data) {
         var temp = gameWord.showWord();
         gameWord.checkGuess(checkable);
         if (temp === gameWord.showWord()) {
-            console.log("\nSorry, wrong letter!\n".yellow);
+            console.log("\nSorry, wrong letter!\n");
             counter++;
-            console.log(((8 - counter) + " guesses remaining").yellow);
+            console.log(((8 - counter) + " guesses remaining"));
             promptUser();
         }
         else {
@@ -65,16 +64,16 @@ function checkAnswer(data) {
         }
     }
     else {
-        console.log("\nPlease enter a letter, one at a time.\n".yellow);
+        console.log("\nPlease enter a letter, one at a time.\n");
         promptUser();
     }
 }
 
 function rightGuess() {
-    console.log("\nYou guessed correctly.\n".green);
+    console.log("\nYou guessed correctly.\n");
     if (chosenWord.replace(/ /g, "") == (gameWord.showWord()).replace(/ /g, "")) {
-        console.log(gameWord.showWord().america);
-        console.log('\nYou win!!\n'.america);
+        console.log(gameWord.showWord());
+        console.log('\nYou win!!\n');
         chosenWord = "";
         gameWord = "";
         select = 0;
