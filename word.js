@@ -1,5 +1,7 @@
+// Require letter.js constructor
 var Letter = require("./letter.js");
 
+// Word constructor
 function Word(wordArr) {
     this.wordArr = wordArr;
     this.testWord = [];
@@ -23,4 +25,5 @@ function Word(wordArr) {
     }
 }
 
+// export word constructor
 module.exports = Word;

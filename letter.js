@@ -20,5 +20,5 @@ function Letter(alpha) {
     }
 }
 
-// Make this Constructor available in other files
+// export letter constructor
 module.exports = Letter;
