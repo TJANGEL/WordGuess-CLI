@@ -1,3 +1,4 @@
+// Letter constructor
 function Letter(alpha) {
     this.alpha = alpha;
     this.guessed = false;
@@ -19,4 +20,5 @@ function Letter(alpha) {
     }
 }
 
+// Make this Constructor available in other files
 module.exports = Letter;

@@ -3,7 +3,7 @@ var Word = require("./word.js");
 var inquirer = require('inquirer');
 
 // Global Variables
-wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "PETEY PIRANHA", "DRY BONES", "DONKEY KONG"];
+wordList = [];
 var select = 0;
 var chosenWord = "";
 var gameWord = "";
@@ -12,7 +12,7 @@ var counter = 0;
 
 function startGame() {
     if (wordList.length < 2) {
-        wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "PETEY PIRANHA", "DRY BONES", "DONKEY KONG"];
+        wordList = [];
     }
     select = Math.floor(Math.random() * wordList.length);
     chosenWord = wordList[select];
