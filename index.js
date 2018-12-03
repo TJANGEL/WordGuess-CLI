@@ -3,7 +3,7 @@ var Word = require("./word.js");
 var inquirer = require('inquirer');
 
 // Global Variables
-wordList = [];
+wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "DONKEY KONG"];
 var select = 0;
 var chosenWord = "";
 var gameWord = "";
@@ -12,7 +12,7 @@ var counter = 0;
 
 function startGame() {
     if (wordList.length < 2) {
-        wordList = [];
+        wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "DONKEY KONG"];
     }
     select = Math.floor(Math.random() * wordList.length);
     chosenWord = wordList[select];
@@ -21,7 +21,7 @@ function startGame() {
     if (select > -1) {
         wordList.splice(select, 1);
     }
-    console.log("\nYou Get 10 Changes to Correctly Guess this Name\n")
+    console.log("\nYou Get 10 Chances to Correctly Guess this Name\n")
     promptUser();
 }
 
