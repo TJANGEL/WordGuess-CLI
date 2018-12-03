@@ -2,14 +2,14 @@
 var Word = require("./word.js");
 var inquirer = require('inquirer');
 
-// Global Variables
+// Global Variables MARIO themed
 wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "DONKEY KONG"];
 var select = 0;
 var chosenWord = "";
 var gameWord = "";
 var counter = 0;
 
-
+// Initiate game function
 function startGame() {
     if (wordList.length < 2) {
         wordList = ["YOSHI", "MARIO", "PRINCESS PEACH", "LUIGI", "PRINCESS DAISY", "BOWSER", "PAULINE", "TOAD", "CHAIN CHOMP", "BIRDO", "ROSALINA", "DONKEY KONG"];
@@ -50,6 +50,7 @@ function promptUser() {
     }
 }
 
+// check if letter is correct
 function checkAnswer(data) {
     if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
         var checkable = data.letter.toUpperCase();
