@@ -72,6 +72,7 @@ function checkAnswer(data) {
     }
 }
 
+// response if you guess the correct word
 function rightGuess() {
     console.log("\nYou guessed correctly!\n");
     if (chosenWord.replace(/ /g, "") == (gameWord.showWord()).replace(/ /g, "")) {
@@ -88,4 +89,5 @@ function rightGuess() {
     }
 }
 
+// initiate game
 startGame();
