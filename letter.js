@@ -2,7 +2,7 @@
 function Letter(alpha) {
   this.alpha = alpha;
   this.guessed = false;
-  this.displayLet = function() {
+  this.displayLet = function () {
     if (this.alpha === " ") {
       return " ";
     } else if (!this.guessed) {
@@ -11,7 +11,7 @@ function Letter(alpha) {
       return this.alpha;
     }
   };
-  this.check = function(userGuess) {
+  this.check = function (userGuess) {
     if (userGuess === this.alpha) {
       this.guessed = true;
     }

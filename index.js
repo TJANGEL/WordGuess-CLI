@@ -63,7 +63,7 @@ function promptUser() {
           message: "\nPick a letter and press enter. "
         }
       ])
-      .then(function(data) {
+      .then(function (data) {
         checkAnswer(data);
       });
   } else {
