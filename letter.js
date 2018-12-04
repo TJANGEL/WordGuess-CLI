@@ -1,18 +1,18 @@
 // Letter constructor
-function Letter(alpha) {
-  this.alpha = alpha;
+function Letter(alphabet) {
+  this.alphabet = alphabet;
   this.guessed = false;
-  this.displayLet = function () {
-    if (this.alpha === " ") {
+  this.displayLet = function() {
+    if (this.alphabet === " ") {
       return " ";
     } else if (!this.guessed) {
       return "_";
     } else {
-      return this.alpha;
+      return this.alphabet;
     }
   };
-  this.check = function (userGuess) {
-    if (userGuess === this.alpha) {
+  this.check = function(userGuess) {
+    if (userGuess === this.alphabet) {
       this.guessed = true;
     }
   };
