@@ -1,5 +1,9 @@
 # WordGuess-CLI
 
+### NPM Install Requirements:
+
+`npm inquirer`
+
 ### Built with:
 
 `Visual Studio Code (https://code.visualstudio.com) - Text editor`
