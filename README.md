@@ -12,8 +12,6 @@
 
 `Node.js (https://nodejs.org/en) - Framework used`
 
-
-
 ## Demo of functioning app:
 
 ### Initialization: 'node index.js'
@@ -32,4 +30,4 @@
 
 ![error response](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/error-code.png)
 
-![](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/WordGuess-cli-demo.mov)
+![Full Video Demo](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/WordGuess-cli-demo.mov)
