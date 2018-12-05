@@ -15,7 +15,6 @@
 
 
 ## Demo of functioning app:
-![](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/WordGuess-cli-demo.mov)
 
 ### Initialization: 'node index.js'
 
@@ -32,3 +31,5 @@
 ### Error Response:
 
 ![error response](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/error-code.png)
+
+![](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/WordGuess-cli-demo.mov)
