@@ -8,22 +8,14 @@ Initialization: node index.js'
 
 ![initialize](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/initialize.png)
 
-Bands In Town
+Correctly selected letter:
 
-Spotify: node liri.js spotify-this-song '<song name here>'
+![correct](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/correct.png)
 
-Spotify
+Incorrect selected letter:
 
-OMDB: node liri.js movie-this '<movie name here>'
+![incorrect](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/wrongletter.png)
 
-OMDB
-
-Do What it Says: `node liri.js do-what-it-says'
-
-Do What it Says
-How data is formatted when appended to log.txt file:
-
-log.txt
 Error Response:
 
-Error Response
+![error response](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/error-code.png)
