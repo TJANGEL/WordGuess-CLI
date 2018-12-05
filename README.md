@@ -1,5 +1,15 @@
 # WordGuess-CLI
 
+### Built with:
+
+`Visual Studio Code (https://code.visualstudio.com) - Text editor`
+
+`Javascript`
+
+`Node.js (https://nodejs.org/en) - Framework used`
+
+
+
 ## Demo of functioning app:
 
 ![](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/WordGuess-cli-demo.mov)
