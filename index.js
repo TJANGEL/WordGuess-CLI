@@ -68,10 +68,10 @@ function endGame(outcome) {
     ])
     .then(function(response) {
       if (response.confirm) {
-        console.log(chalk.cyan("\nGreat! Generating a new word..."));
+        console.log(chalk.cyan("\nGenerating a new word..."));
         main();
       } else {
-        console.log(chalk.cyan("\nHope you see you next time!\n"));
+        console.log(chalk.cyan("\nCome Play Again!\n"));
         return;
       }
     });
@@ -99,13 +99,13 @@ function main() {
       // Validate user input
       if (data.guess === "") {
         console.log(
-          chalk.bgRed.white("\nWHOOPS!") +
+          chalk.bgRed.white("\nERROR!") +
             chalk.yellow(" You did enter a letter")
         );
         return main();
       } else if (data.guess.length > 1) {
         console.log(
-          chalk.bgRed.white("\nWHOOPS!") +
+          chalk.bgRed.white("\nERROR!") +
             chalk.yellow(" Please guess one letter at a time")
         );
         return main();
