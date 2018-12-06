@@ -1,19 +1,20 @@
 // Letter constructor
-function Letter(alphabet) {
-  this.alphabet = alphabet;
-  this.guessed = false;
-  this.displayLet = function() {
-    if (this.alphabet === " ") {
-      return " ";
-    } else if (!this.guessed) {
-      return "_";
+function Letter(character) {
+  this.character = character.toUpperCase();
+  this.guessedCorrectly = false;
+
+  this.returnCharacter = function() {
+    if (this.guessedCorrectly) {
+      return this.character;
     } else {
-      return this.alphabet;
+      return "_";
     }
   };
-  this.check = function(userGuess) {
-    if (userGuess === this.alphabet) {
-      this.guessed = true;
+
+  this.check = function(guess) {
+    if (this.character.toLowerCase() == guess.toLowerCase()) {
+      this.guessedCorrectly = true;
+    } else {
     }
   };
 }

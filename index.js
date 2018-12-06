@@ -1,9 +1,10 @@
 // Requirements
 var Word = require("./word.js");
 var inquirer = require("inquirer");
+var chalk = require("chalk");
 
 // Global Variables MARIO themed
-wordList = [
+words = [
   "YOSHI",
   "MARIO",
   "PRINCESS PEACH",
@@ -17,101 +18,128 @@ wordList = [
   "ROSALINA",
   "DONKEY KONG"
 ];
-var select = 0;
-var chosenWord = "";
-var gameWord = "";
-var counter = 0;
 
-// Initiate game function
-function startGame() {
-  if (wordList.length < 2) {
-    wordList = [
-      "YOSHI",
-      "MARIO",
-      "PRINCESS PEACH",
-      "LUIGI",
-      "PRINCESS DAISY",
-      "BOWSER",
-      "PAULINE",
-      "TOAD",
-      "CHAIN CHOMP",
-      "BIRDO",
-      "ROSALINA",
-      "DONKEY KONG"
-    ];
-  }
-  select = Math.floor(Math.random() * wordList.length);
-  chosenWord = wordList[select];
-  gameWord = new Word(chosenWord);
-  gameWord.makeWord();
-  if (select > -1) {
-    wordList.splice(select, 1);
-  }
-  console.log("\nYou Get 10 Chances to Correctly Guess this Name\n");
-  promptUser();
-}
+var correctWord = new Word(words[Math.floor(Math.random() * words.length)]);
 
-//Allows the user to input a letter guess, restarts the game if player is out of wrong guesses.
-function promptUser() {
-  if (counter < 8) {
-    console.log(gameWord.showWord());
-    inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "letter",
-          message: "\nPick a letter and press enter. "
-        }
-      ])
-      .then(function(data) {
-        checkAnswer(data);
-      });
+correctWord.generateLetters();
+
+var guessesRemaining = 10;
+
+var guessesSoFar = [];
+
+console.log(chalk.cyan("\nWelcome to the Super Mario Guess Game!"));
+
+// Reset function
+function endGame(outcome) {
+  if (outcome === "win") {
+    console.log(chalk.blue.bold("\nYou won!"));
+    console.log(
+      chalk.yellow("You guessed ") +
+        chalk.blue.bold(correctWord.correctWord.toUpperCase()) +
+        " " +
+        chalk.bgYellow.black(
+          "with " + guessesRemaining + " guesses remaining"
+        ) +
+        "\n"
+    );
   } else {
-    console.log("\nSorry, You Ran Out of Guesses!\n");
-    console.log(chosenWord);
-    chosenWord = "";
-    gameWord = "";
-    select = 0;
-    counter = 0;
-    startGame();
+    console.log("\n" + chalk.bgRed.white.bold("You lost..."));
+    console.log(
+      chalk.yellow("The correct word was: ") +
+        chalk.bgYellow.black(correctWord.correctWord) +
+        "\n"
+    );
   }
+
+  correctWord = new Word(words[Math.floor(Math.random() * words.length)]);
+  correctWord.generateLetters();
+  guessesRemaining = 10;
+  guessesSoFar = [];
+
+  inquirer
+    .prompt([
+      {
+        message: "Would you like to play again?",
+        name: "confirm",
+        type: "confirm"
+      }
+    ])
+    .then(function(response) {
+      if (response.confirm) {
+        console.log(chalk.cyan("\nGreat! Generating a new word..."));
+        main();
+      } else {
+        console.log(chalk.cyan("\nHope you see you next time!\n"));
+        return;
+      }
+    });
 }
 
-// check if letter is correct
-function checkAnswer(data) {
-  if (data.letter.length === 1 && /^[a-zA-Z]+$/.test(data.letter)) {
-    var checkable = data.letter.toUpperCase();
-    var temp = gameWord.showWord();
-    gameWord.checkGuess(checkable);
-    if (temp === gameWord.showWord()) {
-      console.log("\nSorry, wrong letter!\n");
-      counter++;
-      console.log(8 - counter + " guesses remaining");
-      promptUser();
-    } else {
-      rightGuess();
-    }
-  } else {
-    console.log("\nYou Can Only Enter One Letter At A Time!\n");
-    promptUser();
-  }
+// Main game
+function main() {
+  inquirer
+    .prompt([
+      {
+        name: "guess",
+        prefix: "",
+        message:
+          "\nWord: " +
+          chalk.blue(correctWord.update()) +
+          "\n\nGuesses remaining: " +
+          chalk.magenta.bold(guessesRemaining) +
+          "\nIncorrect guesses so far: " +
+          chalk.magenta.bold(guessesSoFar.join(" ")) +
+          "\n" +
+          "Guess a letter:"
+      }
+    ])
+    .then(function(data) {
+      // Validate user input
+      if (data.guess === "") {
+        console.log(
+          chalk.bgRed.white("\nWHOOPS!") +
+            chalk.yellow(" You did enter a letter")
+        );
+        return main();
+      } else if (data.guess.length > 1) {
+        console.log(
+          chalk.bgRed.white("\nWHOOPS!") +
+            chalk.yellow(" Please guess one letter at a time")
+        );
+        return main();
+      } else if (guessesSoFar.includes(data.guess)) {
+        console.log(
+          chalk.bgRed.white("\nWHOOPS!") +
+            chalk.yellow(" You already guessed that! Choose another letter")
+        );
+        return main();
+      }
+
+      // Only decrement guessesRemaining on an incorrect guess
+      if (!correctWord.correctWord.includes(data.guess)) {
+        guessesRemaining--;
+      }
+
+      guessesSoFar.push(data.guess);
+
+      for (var i = 0; i < correctWord.letters.length; i++) {
+        correctWord.letters[i].check(data.guess);
+      }
+
+      if (
+        correctWord.update().toLowerCase() ==
+        correctWord.correctWord.toLowerCase()
+      ) {
+        endGame("win");
+        return;
+      }
+
+      if (guessesRemaining == 0) {
+        endGame("loss");
+        return;
+      }
+      main();
+    });
 }
 
-// response if you guess the correct word
-function rightGuess() {
-  console.log("\nYou guessed correctly!\n");
-  if (chosenWord.replace(/ /g, "") == gameWord.showWord().replace(/ /g, "")) {
-    console.log(gameWord.showWord());
-    console.log("\nYou win!!\n");
-    chosenWord = "";
-    gameWord = "";
-    select = 0;
-    counter = 0;
-    startGame();
-  } else {
-    promptUser();
-  }
-}
-
-// initiate game
-startGame();
+main();
