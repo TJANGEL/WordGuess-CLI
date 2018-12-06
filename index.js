@@ -11,6 +11,8 @@ words = [
   "LUIGI",
   "PRINCESS DAISY",
   "BOWSER",
+  "WARIO",
+  "WALUIGI",
   "PAULINE",
   "TOAD",
   "CHAIN CHOMP",
