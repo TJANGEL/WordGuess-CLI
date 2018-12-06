@@ -44,10 +44,10 @@ If user runs out of guesses, game will end and user will be shown the correct wo
 
 ### Error Response:
 
-![error response](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/error-code.png)
+![error response](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/error_message_screenshot.png)
 
 ### End Game:
 
 ![End Game](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/images/endgame_screenshot.png)
 
-![Full Video Demo]()
+![Full Video Demo](https://github.com/TJANGEL/WordGuess-CLI/blob/master/assets/Word-Guess-CLI-demo.mov)
