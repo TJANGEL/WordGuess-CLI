@@ -29,7 +29,7 @@ var guessesRemaining = 10;
 
 var guessesSoFar = [];
 
-console.log(chalk.cyan("\nWelcome to the Super Mario Guess Game!"));
+console.log(chalk.cyan("\nSuper Mario Guess Game!"));
 
 // Reset function
 function endGame(outcome) {
