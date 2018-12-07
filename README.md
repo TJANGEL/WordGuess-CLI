@@ -2,17 +2,17 @@
 
 Simple word guess game that accepts user input using inquirer npm package.
 
-After running the js file, the user will be presented with a random hidden word with underlines in it's place for each letter.
+After running the js file, the user will be presented with a random hidden word with underlines in the place of each letter.
 
 User has 10 guesses to correctly guess the hidden word.
 
-The user is only able to enter one letter at a time / If they enter more than one letter they will encounter an error response.
+The user is only able to enter one letter at a time / If they enter more than one letter they will encounter an error message.
 
 When user guesses correct letter, all letters in the guess word that match that letter will be printed and replace the underline.
 
 When user guesses incorrect letter you will be deducted a guess and guessed letter will added to guessed list.
 
-If user guesses all letters correctly they will be receive a congratulations reponse and prompted to start a new game.
+If user guesses all letters correctly they will be receive a congratulations message and prompted to start a new game.
 
 If user runs out of guesses, game will end and user will be shown the correct word.
 
