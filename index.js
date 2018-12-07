@@ -21,6 +21,7 @@ words = [
   "DONKEY KONG"
 ];
 
+// Create word to guess
 var correctWord = new Word(words[Math.floor(Math.random() * words.length)]);
 
 correctWord.generateLetters();
@@ -29,7 +30,7 @@ var guessesRemaining = 10;
 
 var guessesSoFar = [];
 
-console.log(chalk.cyan("\nSuper Mario Guess Game!"));
+console.log(chalk.red("\nSuper Mario Characters Guess Game!"));
 
 // Reset function
 function endGame(outcome) {
@@ -53,6 +54,7 @@ function endGame(outcome) {
     );
   }
 
+  // Create New word once game ends
   correctWord = new Word(words[Math.floor(Math.random() * words.length)]);
   correctWord.generateLetters();
   guessesRemaining = 10;
@@ -61,7 +63,7 @@ function endGame(outcome) {
   inquirer
     .prompt([
       {
-        message: "Would you like to play again?",
+        message: "Want to play again?",
         name: "confirm",
         type: "confirm"
       }
@@ -71,7 +73,7 @@ function endGame(outcome) {
         console.log(chalk.cyan("\nGenerating a new word..."));
         main();
       } else {
-        console.log(chalk.cyan("\nCome Play Again!\n"));
+        console.log(chalk.cyan("\nCome Back Soon!\n"));
         return;
       }
     });
@@ -87,9 +89,9 @@ function main() {
         message:
           "\nWord: " +
           chalk.blue(correctWord.update()) +
-          "\n\nGuesses remaining: " +
+          "\n\nGuesses Remaining: " +
           chalk.magenta.bold(guessesRemaining) +
-          "\nIncorrect guesses so far: " +
+          "\nLetters Guessed: " +
           chalk.magenta.bold(guessesSoFar.join(" ")) +
           "\n" +
           "Guess a letter:"
@@ -111,13 +113,12 @@ function main() {
         return main();
       } else if (guessesSoFar.includes(data.guess)) {
         console.log(
-          chalk.bgRed.white("\nWHOOPS!") +
+          chalk.bgRed.white("\nERROR!") +
             chalk.yellow(" You already guessed that! Choose another letter")
         );
         return main();
       }
 
-      // Only decrement guessesRemaining on an incorrect guess
       if (!correctWord.correctWord.includes(data.guess)) {
         guessesRemaining--;
       }
@@ -144,4 +145,5 @@ function main() {
     });
 }
 
+// Run main game function
 main();
